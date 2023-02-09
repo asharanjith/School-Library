@@ -38,6 +38,7 @@ def main
     option = gets.chomp.to_i
     choose_option(option, app)
   end
+  puts 'Thank you for using this app!'
 end
 
 main
