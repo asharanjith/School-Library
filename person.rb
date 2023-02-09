@@ -1,6 +1,4 @@
 require './nameable'
-require './capitalize_decorator'
-require './trimmer_decorator'
 
 class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
@@ -12,8 +10,8 @@ class Person < Nameable
     @rentals = []
   end
 
-  attr_accessor :name, :age, :parent_permission, :rentals
-  attr_reader :id
+  attr_accessor :name, :age, :id, :parent_permission
+  attr_reader :rentals
 
   def can_use_services?
     is_of_age? || @parent_permission
