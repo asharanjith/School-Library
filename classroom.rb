@@ -8,7 +8,7 @@ class Classroom
   attr_reader :students
 
   def add_students(student)
-    @student.push(student)
+    @students.push(student)
     student.classroom = self
   end
 end
