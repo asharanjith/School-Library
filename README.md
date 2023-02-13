@@ -36,6 +36,9 @@ Save records of who borrowed a given book and when.
   </ul>
 </details>
 
+- Team    
+        - [@asharanjith](https://github.com/asharanjith)  
+        - [Zainab Alzubair](https://github.com/Zainab-Alzubair)
 
 ### Key Features <a name="key-features"></a>
 
@@ -71,6 +74,11 @@ cd Enumerable
 - GitHub: [@asharanjith](https://github.com/asharanjith)
 - Twitter: [@asha_cep](https://twitter.com/asha_cep)
 - LinkedIn: [asha-vijayan](www.linkedin.com/in/ashavijayan)
+
+👤 **Zainab Alzubair**
+
+- GitHub: [@Zainab-Alzubair](https://github.com/Zainab-Alzubair)
+- LinkedIn: [@Zainab-Alzubair](https://www.linkedin.com/in/zainab-al-zubair/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
