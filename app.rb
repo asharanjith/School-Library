@@ -4,14 +4,47 @@ require './rental'
 require './student'
 require './teacher'
 require './classroom'
+require 'json'
 
 class App
   attr_accessor :books, :people, :rentals
 
   def initialize
+    base_path = "#{Dir.pwd}/saved_data"
+
     @books = []
+    books_json = File.read("#{base_path}/books.json")
+    JSON.parse(books_json).each { |book| @books << Book.new(book['title'], book['author']) } unless books_json.empty?
+
     @people = []
+    people_json = File.read("#{base_path}/people.json")
+    handle_people(people_json == '' ? [] : JSON.parse(people_json))
+
     @rentals = []
+    rentals_json = File.read("#{base_path}/rentals.json")
+    handle_rentals(rentals_json == '' ? [] : JSON.parse(rentals_json))
+  end
+
+  def handle_people(people_json)
+    people_json.each do |person|
+      if person['type'] == 'Student'
+        student = Student.new(person['age'], person['name'], parent_permission: person['parent_permission'])
+        student.id = person['id']
+        @people << student
+      else
+        teacher = Teacher.new(person['age'], person['specialization'], person['name'])
+        teacher.id = person['id']
+        @people << teacher
+      end
+    end
+  end
+
+  def handle_rentals(rentals_json)
+    rentals_json.each do |rental|
+      rented_book = @books.find { |book| book.title == rental['book_title'] }
+      rented_person = @people.find { |person| person.id == rental['person_id'] }
+      @rentals << Rental.new(rental['date'], rented_book, rented_person)
+    end
   end
 
   def list_all_books
@@ -75,7 +108,7 @@ class App
   end
 
   def create_rental
-    puts 'Select a book from the following list by number'
+    puts 'Select a book from the following list by number '
     @books.each_with_index do |book, index|
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
