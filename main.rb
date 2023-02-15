@@ -1,6 +1,7 @@
 require './app'
 require './choices'
 require './choose_option'
+require './preserve_data'
 
 def main
   app = App.new
